@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ConfluxaaOne – Issues</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+  <aside class="side">
+    <div class="logo"><span>C</span>ConfluxaaOne</div>
+    <nav>
+      <a class="on" href="#">Home</a>
+      <a href="#">Issues</a>
+      <a href="#">Board</a>
+      <a href="#">Workload</a>
+      <a href="#">Reports</a>
+      <a href="#">Settings</a>
+    </nav>
+    <div class="promo">
+      <b>Ask AI anything</b>
+      <p>Find risks, assign work and fix overdue issues faster.</p>
+      <button class="btn white" id="promoBtn">Open AI assistant</button>
+    </div>
+    <a class="logout" href="#">Log out</a>
+  </aside>
+
+  <main class="main">
+    <header class="head">
+      <div>
+        <h1>Issues overview</h1>
+        <p id="today"></p>
+      </div>
+      <div class="tools">
+        <input class="search" id="search" placeholder="Search issue or title" aria-label="Search issues">
+        <button class="btn" id="upload">Bulk upload</button>
+        <button class="btn primary" id="newIssue">New issue</button>
+        <span class="avatar">SS</span>
+      </div>
+    </header>
+
+    <!-- Row 1: KPIs -->
+    <section class="grid kpis">
+      <div class="card kpi"><span>Open issues</span><b>17</b><svg id="s1" viewBox="0 0 100 30"></svg></div>
+      <div class="card kpi"><span>Overdue</span><b class="red">12</b><svg id="s2" viewBox="0 0 100 30"></svg></div>
+      <div class="card kpi"><span>Due today</span><b class="amber">3</b><svg id="s3" viewBox="0 0 100 30"></svg></div>
+      <div class="card kpi"><span>Unassigned</span><b>2</b><svg id="s4" viewBox="0 0 100 30"></svg></div>
+      <div class="card grad hero">
+        <span>AI found</span>
+        <b>3 issues</b>
+        <p>need action today</p>
+        <button class="round" id="heroBtn" aria-label="Review">↗</button>
+      </div>
+    </section>
+
+    <!-- Row 2: charts -->
+    <section class="grid charts">
+      <div class="card"><h3>Created vs resolved</h3><svg id="bars" viewBox="0 0 400 190"></svg>
+        <div class="legend"><i class="d1"></i>Created <i class="d2"></i>Resolved</div></div>
+      <div class="card"><h3>On-time resolution</h3><svg id="line" viewBox="0 0 400 190"></svg>
+        <div class="legend"><i class="d1"></i>This month <i class="d2"></i>Last month</div></div>
+      <div class="stack">
+        <div class="layer l1"></div><div class="layer l2"></div>
+        <div class="card grad donut">
+          <span>Deadlines met</span>
+          <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="46" class="track"/><circle cx="60" cy="60" r="46" class="val" id="ring"/></svg>
+          <em>85%</em>
+          <div class="two"><small>Target<br><b>90%</b></small><small>Actual<br><b>85%</b></small></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Row 3: AI + issues + workload -->
+    <section class="grid bottom">
+      <div class="card ai">
+        <h3>AI assistant</h3>
+        <div class="askrow">
+          <input id="q" placeholder="Try: what could stop production?" aria-label="Ask AI">
+          <button class="btn accent" id="ask">Ask</button>
+        </div>
+        <div id="answer" class="answer">Ask a question, or pick a suggestion below.</div>
+        <div id="tips"></div>
+      </div>
+
+      <div class="card list">
+        <div class="listhead">
+          <h3>Issues</h3>
+          <div class="chips" id="chips">
+            <button class="chip on" data-f="all">All</button>
+            <button class="chip" data-f="over">Overdue</button>
+            <button class="chip" data-f="today">Due today</button>
+            <button class="chip" data-f="un">Unassigned</button>
+          </div>
+        </div>
+        <div class="scroll"><table>
+          <thead><tr><th>ID</th><th>Title</th><th>Priority</th><th>Owner</th><th>Deadline</th><th></th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table></div>
+      </div>
+
+      <div class="card">
+        <h3>Team workload</h3>
+        <div id="load"></div>
+      </div>
+    </section>
+  </main>
+</div>
+<div id="toast" class="toast" hidden></div>
+<script src="script.js"></script>
+</body>
+</html>
